@@ -1,0 +1,108 @@
+body {
+	background-color: black;
+	background-image: url("https://httpsimage.com/img/binding_dark.png");
+	color: white;
+	font-family: 'Droid Sans', sans-serif;
+	cursor: default;
+}
+
+.controls {
+	text-align: center;
+}
+
+button {
+	outline: none !important;
+}
+
+button:disabled {
+	cursor: default !important;
+	opacity: 1 !important;
+	box-shadow: 0 3px 2px #fff !important;
+	color: #fff !important;
+}
+
+
+/* Hidden upon load, for fancy entrance */
+.streamers {
+	display: none;
+}
+
+.streamers a {
+	color: #DFD;
+	text-decoration: none;
+}
+
+.streamers a:visited {
+	color: #CFC;
+}
+
+.streamers a:hover {
+	color: #DFD;
+}
+
+.title {
+	font-family: 'Exo 2', sans-serif;
+	margin: -5px 0 15px 0;
+	border-bottom: 7px solid black;
+}
+
+.main {
+	margin: 10px auto;
+	max-width: 600px;
+	border: 3px solid rgba(255, 255, 255, .2);
+	border-radius: 8px;
+	color: white;
+	text-align: center;
+}
+
+.streamers {
+	text-align: left;
+}
+
+.smallPic:hover {
+	-webkit-transform: scale(1.8);
+	transform: scale(1.8);
+	-webkit-transition: .3s;
+	transition: .3s;
+}
+
+.smallPic {
+	height: 50px;
+	width: 50px;
+	margin-left: -20px;
+}
+
+.smallPicOff {
+	height: 35px;
+	width: 35px;
+	margin-left: -20px;
+}
+
+.online {
+	background: black;
+	padding: 10px;
+}
+
+.online:hover {
+	color: #FFD;
+}
+
+.offline {
+	background: #222;
+	color: #666;
+	font-size: .88em;
+	padding: 3px 10px 3px 10px;
+}
+
+.streamerID {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: bold;
+	font-size: 1.7em;
+	padding-top: 8px;
+}
+
+.streamerInfo {
+	font-family: 'Droid Sans', sans-serif;
+	font-style: italic;
+	padding-top: 15px;
+}

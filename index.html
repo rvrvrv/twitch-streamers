@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Twitch Streamers List</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Sans|Exo+2:800|Source+Sans+Pro">
+	<link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+	<div class="controls">
+		<button class="btn btn-success" id="onlineBtn">Online</button>
+		<button class="btn btn-primary" id="allBtn" disabled>All</button>
+		<button class="btn btn-danger" id="offlineBtn">Offline</button>
+		<button class="btn btn-default" id="refreshBtn">Refresh All</button>
+	</div>
+	<div class="container main">
+		<div class="title row">
+			<h1>Twitch&nbsp;&nbsp;Streamers</h1>
+		</div>
+		<div class="streamers">
+		</div>
+	</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="js/index.js"></script>
+</html>
