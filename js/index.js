@@ -1,40 +1,71 @@
 /*jshint browser: true, esversion: 6*/
-/*global $*/
+/*global $, console*/
 
 // User array -- adjust as needed for different streaming accounts
-var userArray = ['streamerhouse', 'freecodecamp', 'syndicate', 'esl_csgo', 'food'];
+let userArray = [
+  'streamerhouse',
+  'freecodecamp',
+  'syndicate',
+  'esl_csgo',
+  'food'
+];
 
 $(document).ready(retrieveInfo());
 
 //Get user data from Twitch API
 function retrieveInfo() {
-	// Get info for every user in array
-	userArray.forEach(function (e) {
-		//URL for specific users
-		var URL = `https://wind-bow.gomix.me/twitch-api/streams/${e}?callback=?`;
+	// Get info for each user in array
+	userArray.forEach(user => {
+		let URL = `https://wind-bow.gomix.me/twitch-api/streams/${user}?callback=?`;
 		//Retrieve from API and display data
-		$.getJSON(URL, function (data) {
-			//If channel does not exist
-			if (data.error == 'Not Found') {
-				$('.streamers').append(`<div class="row offline"><div class="col-xs-1 streamerPic"><img src="https://maxcdn.icons8.com/windows8/PNG/512/Messaging/offline-512.png" class="smallPicOff"></img></div><div class="col-xs-4 streamerID"><s>${e}</s></div><div class="col-xs-7 streamerInfo">User not found</div></div>`);
-			}
+		$.getJSON(URL, data => {
 			//If channel is online
-			else if (data.stream !== null && data.stream !== undefined) {
-				var info = data.stream.channel.status;
-				var pic = data.stream.channel.logo;
-				var link = data.stream.channel.url;
-				$('.streamers').append(`<div class="row online"><div class="col-xs-1 streamerPic"><img src="${pic}" class="smallPic"></img></div><div class="col-xs-4 streamerID"><a href="${link}" target="_blank">${e}</a></div><div class="col-xs-7 streamerInfo">${info}</div></div>`);
-			}
-			//If channel is offline
-			else {
-				$('.streamers').append(`<div class="row offline"><div class="col-xs-1 streamerPic"><img src="https://maxcdn.icons8.com/windows8/PNG/512/Messaging/offline-512.png" class="smallPicOff"></img></div><div class="col-xs-4 streamerID">${e}</div><div class="col-xs-7 streamerInfo">Currently Offline</div></div>`);
+			if (data.stream) {
+				let channel = data.stream.channel;
+				$('.streamers').append(
+					`<div class='row online'>
+						<div class='col-sm-5'>
+								<img src='${channel.logo}' class='small-pic' alt='Channel logo'>
+								<span class='streamer-id'><a href='${channel.url}' target='_blank'>${user}</a></span>
+						</div>
+						<div class='col-sm-7'>
+							<p class='streamer-info'>${channel.status}</p>
+						</div>
+					</div>`
+				);
+			} else if (data.error === 'Not Found') {
+				//If channel does not exist
+				$('.streamers').append(
+					`<div class='row offline'>
+						<div class='col-sm-5'>
+							<img src='https://rvrvrv.github.io/img/offline.png' class='small-pic-off' alt='Offline logo'>
+							<span class='streamer-id'><s>${user}</s></span>
+						</div>
+						<div class='col-sm-7'>
+							<p class='streamer-info'>User not found</p>
+						</div>
+					</div>`
+				);
+			} else {
+				//If channel is offline
+				$('.streamers').append(
+					`<div class='row offline'>
+						<div class='col-sm-5'>
+							<img src='https://rvrvrv.github.io/img/offline.png' class='small-pic-off' alt='Offline logo'>
+							<span class='streamer-id'>${user}</span>
+						</div>
+						<div class='col-sm-7'>
+							<p class='streamer-info'>Currently offline</p>
+						</div>
+					</div>`
+				);
 			}
 		});
 		$('.streamers').fadeIn();
 	});
 }
 
-//Disable clicked button and enable the other two
+//Disable clicked button and enable other the two
 function disableMe(btn) {
 	$(btn).prop('disabled', true);
 	switch (btn.id) {
@@ -60,20 +91,20 @@ $('#onlineBtn').click(function () {
 });
 
 //Display offline users only
-$('#offlineBtn').click(function () {
+$('#offlineBtn').click(function() {
 	disableMe(this);
 	$('.online').fadeOut(100, () => $('.offline').fadeIn(100));
 });
 
 //Display all users
-$('#allBtn').click(function () {
+$('#allBtn').click(function() {
 	disableMe(this);
 	$('.offline').fadeIn();
 	$('.online').fadeIn();
 });
 
-//Refresh entire results
-$('#refreshBtn').click(function () {
+//Refresh entire list
+$('#refreshBtn').click(function() {
 	$('.streamers').empty().hide();
 	retrieveInfo();
 	$('#allBtn').click();
