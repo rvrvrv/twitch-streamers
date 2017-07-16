@@ -1,43 +1,21 @@
 body {
-	background-color: black;
-	background-image: url("https://httpsimage.com/img/binding_dark.png");
-	color: white;
+	background: #000 url('https://rvrvrv.github.io/img/static.jpg');
+	color: #fff;
 	font-family: 'Droid Sans', sans-serif;
-	cursor: default;
-}
-
-.controls {
-	text-align: center;
 }
 
 button {
 	outline: none !important;
+	-webkit-transition: -webkit-box-shadow .5s;
+	transition: box-shadow .5s;
 }
 
 button:disabled {
 	cursor: default !important;
 	opacity: 1 !important;
+	-webkit-box-shadow: 0 3px 2px #fff !important;
 	box-shadow: 0 3px 2px #fff !important;
 	color: #fff !important;
-}
-
-
-/* Hidden upon load, for fancy entrance */
-.streamers {
-	display: none;
-}
-
-.streamers a {
-	color: #DFD;
-	text-decoration: none;
-}
-
-.streamers a:visited {
-	color: #CFC;
-}
-
-.streamers a:hover {
-	color: #DFD;
 }
 
 .title {
@@ -51,58 +29,77 @@ button:disabled {
 	max-width: 600px;
 	border: 3px solid rgba(255, 255, 255, .2);
 	border-radius: 8px;
-	color: white;
-	text-align: center;
+	color: #fff;
 }
 
+
+/* Hidden upon load, for smooth entrance */
 .streamers {
-	text-align: left;
+	display: none;
 }
 
-.smallPic:hover {
-	-webkit-transform: scale(1.8);
-	transform: scale(1.8);
-	-webkit-transition: .3s;
-	transition: .3s;
+.streamers a {
+	text-decoration: none;
 }
 
-.smallPic {
-	height: 50px;
-	width: 50px;
-	margin-left: -20px;
-}
-
-.smallPicOff {
-	height: 35px;
-	width: 35px;
-	margin-left: -20px;
+.streamers a,
+.streamers a:hover {
+	color: #dfd;
 }
 
 .online {
-	background: black;
+	background: #000;
 	padding: 10px;
 }
 
 .online:hover {
-	color: #FFD;
+	color: #ffd;
 }
 
 .offline {
 	background: #222;
 	color: #666;
-	font-size: .88em;
-	padding: 3px 10px 3px 10px;
+	font-size: .85em;
+	padding: 3px 10px;
 }
 
-.streamerID {
+.small-pic,
+.small-pic-off {
+	margin-left: -15px;
+}
+
+.small-pic {
+	height: 50px;
+	width: 50px;
+	-webkit-transition: .3s;
+	transition: .3s;
+}
+
+.small-pic:hover {
+	-webkit-transform: scale(1.8);
+	transform: scale(1.8);
+}
+
+.small-pic-off {
+	height: 35px;
+	width: 35px;
+}
+
+.streamer-id {
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: bold;
 	font-size: 1.7em;
-	padding-top: 8px;
+	padding-top: 5px;
 }
 
-.streamerInfo {
+.streamer-info {
 	font-family: 'Droid Sans', sans-serif;
 	font-style: italic;
-	padding-top: 15px;
+	padding-top: 5px;
+}
+
+@media screen and (max-width: 768px) {
+	.main {
+		max-width: 95vw;
+	}
 }
